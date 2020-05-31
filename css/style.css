@@ -1,0 +1,252 @@
+/* CSS */
+:root {
+  --outer-space-crayola: #2b4141;
+  --dark-turquoise: #34e4ea;
+  --cyan-process: #01baef;
+  --white: #fbfbff;
+  --steel-teal: #508991;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+.figure-space {
+  max-width: 512px;
+  margin: auto;
+  display: block;
+}
+
+body {
+  background-color: var(--cyan-process);
+  color: var(--white);
+  height: 100%;
+  overflow-y: hidden;
+}
+
+.header {
+  margin-top: 100px;
+  font-size: 100px;
+  transition: opacity 1s;
+}
+.loading {
+  margin-top: 20px;
+  font-size: 40px;
+}
+h1,
+h3 {
+  text-align: center;
+}
+
+@-webkit-keyframes pos {
+  0%,
+  100% {
+    -webkit-transform: rotate(-6deg);
+    transform: rotate(-6deg);
+  }
+
+  50% {
+    -webkit-transform: rotate(6deg);
+    transform: rotate(6deg);
+  }
+}
+
+@keyframes pos {
+  0%,
+  100% {
+    -webkit-transform: rotate(-6deg);
+    transform: rotate(-6deg);
+  }
+
+  50% {
+    -webkit-transform: rotate(6deg);
+    transform: rotate(6deg);
+  }
+}
+
+.egg {
+  fill: var(--outer-space-crayola);
+  -webkit-animation: pos 3s ease infinite;
+  animation: pos 3s ease infinite;
+  -webkit-transform: translateY(50px);
+  transform: translateY(50px);
+  -webkit-transform-origin: 50% 80%;
+  transform-origin: 50% 80%;
+}
+
+.shadow {
+  fill: rgb(200, 200, 200);
+}
+
+.caption {
+  font-weight: lighter;
+  color: var(--white);
+  text-align: center;
+}
+
+@media (max-width: 599px) {
+  .main {
+    padding: 20px 0;
+  }
+
+  .figure-space {
+    max-width: 200px;
+  }
+
+  .caption {
+    font-size: 50px;
+  }
+}
+
+.btn {
+  box-shadow: 0px 10px 14px -7px var(--white);
+  background-color: var(--white);
+  color: var(--cyan-process);
+  border-radius: 25px;
+  border: 1px solid var(--cyan-process);
+  cursor: pointer;
+  font-family: Arial;
+  font-weight: bold;
+  padding: 21px 43px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px var(--white);
+  font-size: 45px;
+  display: block;
+  margin: auto;
+  transition: opacity 1s;
+  outline: none;
+}
+
+.btn:hover {
+  background-color: var(--steel-teal);
+}
+
+.btn:active {
+  position: relative;
+  top: 1px;
+}
+
+.theme-section {
+  margin-top: 25px;
+}
+
+.theme-image {
+  display: block;
+  width: 250px;
+  height: 250px;
+  border-radius: 10px;
+  border: none;
+  margin: auto;
+}
+
+.thumbnail-container {
+  width: 450px;
+  display: none;
+  margin-right: auto;
+  margin-left: calc(50% - 225px);
+  position: relative;
+  transition: width 2s ease-in, margin-left 2s linear;
+}
+
+.original-preview {
+  max-width: 100%;
+  border: 10px solid white;
+  border-radius: 2px;
+  display: block;
+  opacity: 0;
+  transition: opacity 1s;
+  margin: auto;
+}
+
+.see-preview {
+  bottom: 141px;
+  right: 165px;
+  width: 120px;
+  height: 50px;
+  background-color: gray;
+}
+
+.select-theme {
+  bottom: 81px;
+  right: 165px;
+  width: 120px;
+  height: 50px;
+  background-color: var(--dark-turquoise);
+}
+.see-preview,
+.select-theme {
+  position: absolute;
+  border-radius: 20px;
+  font-weight: 900;
+  font-size: 20px;
+  color: white;
+  border: none;
+  opacity: 0;
+  outline: none;
+  transition: opacity 0.2s;
+}
+
+.option:hover {
+  cursor: pointer;
+}
+
+.feature-section {
+  margin-top: 25px;
+  text-align: center;
+  display: none;
+}
+.feature {
+  height: 350px;
+  width: 250px;
+  background-color: var(--steel-teal);
+  border: 3px solid var(--white);
+  border-radius: 10px;
+  display: inline-block;
+  transition: width 2s ease-in, height 2s ease-in, left 2s ease-in,
+    top 2s ease-in, right 1s linear;
+  margin-right: 25px;
+  margin-left: 25px;
+}
+
+li {
+  margin-top: 25px;
+  margin-left: 10px;
+  font-size: 16px;
+  font-weight: 900;
+}
+
+.button-section {
+  margin-top: 25px;
+}
+.add {
+  width: 85px;
+  height: 45px;
+  display: block;
+  margin: auto;
+  background-color: rgba(0, 0, 0, 0.315);
+  color: var(--white);
+  outline: none;
+  border: 2px solid var(--white);
+  border-radius: 5px;
+  font-weight: 900;
+  font-size: 20px;
+}
+
+.add:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.52);
+}
+
+.finish-section {
+  display: none;
+}
+.finish {
+  opacity: 0;
+  transition: opacity 1s;
+}

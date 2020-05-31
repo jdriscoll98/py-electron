@@ -1,0 +1,80 @@
+<html>
+
+<head>
+    <title>DevHub</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <script src="../js/setUp.js"></script>
+</head>
+
+<body>
+    <div>
+        <h1 class="header" id="header">Welcome to DevHub!</h1>
+        <button onClick="finishSite()" id="begin" class="btn">
+            Click here to begin!
+        </button>
+    </div>
+    <div class="theme-section">
+        <div id="thumbnail-container" class="thumbnail-container">
+            <img id="thumbnail" class="original-preview" onmouseover="showPreview(this)"
+                onmouseleave="hidePreview(this)" src="../img/preview-original.png" />
+            <button id="original-preview" onClick="previewSite()" onmouseenter="fadeImage()" class="see-preview option">
+                Preview
+            </button>
+            <button id="select-theme" onClick="selectSite()" onmouseenter="fadeImage()" class="select-theme option">
+                Select
+            </button>
+        </div>
+    </div>
+    <div id="feature-section" class="feature-section">
+        <div id="blog" class="feature">
+            <div class="title-section">
+                <h1 class="title">Blog</h1>
+            </div>
+            <div class="list-section">
+                <hr />
+                <ul>
+                    <li>Blog Posts</li>
+                    <li>Categories</li>
+                    <li>Image Gallery</li>
+                    <li>...and more!</li>
+                </ul>
+            </div>
+            <div class="button-section">
+                <button onClick="addFeature('blog')" class="add">&#10004</button>
+            </div>
+        </div>
+        <div id="portfolio" class="feature">
+            <div class="title-section">
+                <h1 class="title">Portfolio</h1>
+            </div>
+            <div class="list-section">
+                <hr />
+                <ul>
+                    <li>Contact page</li>
+                    <li>Booking</li>
+                    <li>About me</li>
+                    <li>...and more!</li>
+                </ul>
+            </div>
+            <div class="button-section">
+                <button onClick="addFeature('portfolio')" class="add">&#10004</button>
+            </div>
+        </div>
+    </div>
+    <div id="finish-section" class="finish-section">
+        <button onClick="finishSite()" class="btn finish" id="finish">Generate Site!</button>
+    </div>
+</body>
+
+</html>
+
+<script type="text/javascript">
+    // window.onbeforeunload = function () {
+    //     return "Data will be lost if you leave the page, are you sure?";
+    // };
+    var numberOfFeatures = 0;
+
+    function finishSite() {
+        window.location.href = "loading.html";
+    }
+</script>
