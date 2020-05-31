@@ -1,10 +1,10 @@
 let {
     BrowserWindow
 } = require("electron");
-
 let {
     PythonShell
 } = require("python-shell");
+
 
 const createWindow = () => {
     window = new BrowserWindow({
@@ -15,8 +15,6 @@ const createWindow = () => {
             nodeIntegration: true,
         },
     });
-
-
     window.loadFile("html/setUp.html");
     window.once("ready-to-show", () => {
         window.show();
@@ -37,28 +35,22 @@ function generateCMS(callback) {
     child.on("close", function (code) {
         if (code == 0) {
             console.log("success");
-            process.spawn("./scripts/run.sh");
-            loadWagTailWindow();
+            const fs = require('fs');
+
+            let config = {
+                wagtailCreated: "true"
+            }
+            fs.writeFileSync("./config/config.json", JSON.stringify(config));
+            const remote = require('electron').remote;
+            remote.app.relaunch();
+            remote.app.exit(0);
         } else {
             console.log("exited with code " + code);
         }
     });
 }
 
-function loadWagTailWindow() {
-    window = new BrowserWindow({
-        width: 1200,
-        height: 900,
-        show: false,
-        webPreferences: {
-            nodeIntegration: false,
-        },
-    });
-    window.loadFile("http://localhost:8000");
-    window.once("ready-to-show", () => {
-        window.show();
-    });
-}
+
 
 function begin() {
     const beginButton = document.getElementById("begin");

@@ -236,4 +236,7 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+# development wagtail app
+mysite/
+
 # End of https://www.gitignore.io/api/django

@@ -26,42 +26,28 @@ const createMainWindow = () => {
         show: false,
     });
 
-    mainWindow.loadURL("http://localhost:8000/");
+    mainWindow.loadURL("http://localhost:8000/admin");
     mainWindow.show();
     splash.destroy();
 
 };
 
-const migrateWagTail = () => {
-    let options = {
-        mode: "text",
-        pythonOptions: ["-u"],
-        args: ["migrate"],
-    };
 
-    PythonShell.run("electronwag/manage.py", options, function (err, results) {
-        if (err) throw err;
-        runServerWagTail();
-    });
-};
 
-const runServerWagTail = () => {
-    let options = {
-        args: ["runserver"],
-    };
 
+module.exports.loadWagtail = function loadWagtail() {
     createLoadingWindow();
 
-    module.exports.server = new PythonShell("electronwag/manage.py", {
-        args: ["runserver"]
-    });
+    const process = require("child_process");
+    var child = process.spawn("./scripts/run.sh");
 
-    // Give the django server a chance to load
+    child.stdout.on("data", function (data) {
+        console.log(data.toString());
+    });
+    child.stderr.on("data", function (data) {
+        console.log(data.toString());
+    });
     setTimeout(() => {
         createMainWindow();
     }, 3000);
-};
-
-module.exports.loadWagtail = function loadWagtail() {
-    migrateWagTail();
 }

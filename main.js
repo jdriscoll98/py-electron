@@ -1,5 +1,6 @@
 const {
   app,
+  BrowserWindow
 } = require("electron");
 const wagtail = require('./js/wagtail')
 const {
@@ -10,22 +11,9 @@ const {
 } = require("./js/util");
 
 
-// This is the code to load a current Wagtail Project in the electron broswer
-// 
-// 
-// app.on("ready", () => {
-//   wagtail.loadWagtail()
-// });
-// 
-// app.on("window-all-closed", () => {
-//   if (process.platform !== "darwin") {
-//     wagtail.server.childProcess.kill("SIGINT");
-//     mainWindow = null;
-//     app.quit();
-//   }
-// });
 
 app.on("ready", () => {
+
   readJson("../config/config.json", (err, config) => {
     if (config.wagtailCreated) {
       wagtail.loadWagtail()
